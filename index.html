@@ -349,4 +349,1383 @@
       </div>
 
       <!-- Complete Part 1 Action Bar -->
-      <div class="bg-indigo-50/80 border border-indigo-200 rounded-2xl p-4 sm:p-5 fl
+      <div class="bg-indigo-50/80 border border-indigo-200 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-indigo-600 text-white flex items-center justify-center shrink-0">
+            <i class="fa-solid fa-check-double"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-slate-800 text-sm sm:text-base">Finished reviewing the Prefixes &amp; Suffixes?</h3>
+            <p class="text-xs text-slate-600">Click the button to confirm you studied Part 1 and unlock +30% on your progress bar.</p>
+          </div>
+        </div>
+        <button
+          type="button"
+          id="complete-part1-btn"
+          class="w-full sm:w-auto px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm shadow-md hover:shadow-lg transition flex items-center justify-center gap-2 cursor-pointer"
+        >
+          <i class="fa-solid fa-circle-check"></i>
+          <span>Mark Part 1 Complete (+30%)</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- SECTION 3: SECOND PART — 30 FLASH CARDS MEMORY GAME                 -->
+    <!-- =================================================================== -->
+    <section id="part2-section" class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200/80 space-y-6">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-slate-100 pb-5">
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-2xl bg-purple-100 text-purple-700 flex items-center justify-center text-xl font-bold shrink-0">
+            <i class="fa-solid fa-brain"></i>
+          </div>
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-purple-600">Second Part • Worth 35%</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-slate-800">30 Flash Cards Memory Game</h2>
+            <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Match each <strong>Prefix/Suffix + Verb</strong> card with its <strong>Meaning + Example</strong> card (15 pairs = 30 cards).</p>
+          </div>
+        </div>
+
+        <!-- Game Stats & Reset -->
+        <div class="flex flex-wrap items-center gap-3">
+          <div class="px-3.5 py-2 rounded-xl bg-purple-50 border border-purple-200 text-xs font-bold text-purple-800">
+            Pairs Matched: <span id="memory-pairs-count" class="text-base ml-1">0</span> / 15
+          </div>
+          <div class="px-3.5 py-2 rounded-xl bg-slate-100 border border-slate-200 text-xs font-bold text-slate-700">
+            Moves: <span id="memory-moves-count" class="text-base ml-1">0</span>
+          </div>
+          <button
+            type="button"
+            id="reset-memory-btn"
+            class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-900 text-white text-xs font-bold transition flex items-center gap-1.5 cursor-pointer"
+          >
+            <i class="fa-solid fa-rotate-right"></i> Shuffle &amp; Restart
+          </button>
+        </div>
+      </div>
+
+      <!-- Feedback Banner for Memory Game -->
+      <div id="memory-feedback-banner" class="bg-purple-50 border border-purple-200 rounded-2xl px-4 py-3 text-xs sm:text-sm text-purple-900 flex items-center gap-2.5">
+        <i class="fa-solid fa-lightbulb text-purple-600 text-base"></i>
+        <span id="memory-feedback-text">Flip any two cards to find matching Prefix/Suffix pairs!</span>
+      </div>
+
+      <!-- 30-Card Grid (5 cols on mobile/tablet -> 6 cols on desktop = 5x6 = 30 cards) -->
+      <div id="memory-board" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-3">
+        <!-- Populated dynamically by JS -->
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- SECTION 4: THIRD PART — UNO / ONE CARD BATTLE VS. BOT               -->
+    <!-- =================================================================== -->
+    <section id="part3-section" class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200/80 space-y-6">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-slate-100 pb-5">
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-xl font-bold shrink-0">
+            <i class="fa-solid fa-cards"></i>
+          </div>
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-600">Third Part • Worth 35%</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-slate-800">Prefix &amp; Suffix "UNO / ONE" Battle vs. Bot</h2>
+            <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Be the first to empty your 7-card hand by matching affix categories, types, or meanings!</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button
+            type="button"
+            id="toggle-uno-rules-btn"
+            class="px-4 py-2 rounded-xl bg-amber-100 hover:bg-amber-200 text-amber-900 text-xs font-bold transition flex items-center gap-1.5 cursor-pointer"
+          >
+            <i class="fa-solid fa-circle-question"></i> How to Play
+          </button>
+          <button
+            type="button"
+            id="restart-uno-btn"
+            class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition flex items-center gap-1.5 cursor-pointer"
+          >
+            <i class="fa-solid fa-shuffle"></i> New Match
+          </button>
+        </div>
+      </div>
+
+      <!-- Collapsible How to Play Box -->
+      <div id="uno-rules-box" class="bg-amber-50/90 border border-amber-200 rounded-2xl p-4 sm:p-5 text-xs sm:text-sm text-slate-700 space-y-2">
+        <h3 class="font-bold text-amber-900 flex items-center gap-2">
+          <i class="fa-solid fa-book-sparkles text-amber-600"></i> Official "English Family UNO" Rules:
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 pt-1">
+          <div class="bg-white/80 p-3 rounded-xl border border-amber-100">
+            <strong class="text-indigo-700 block mb-1">1. Matching Characteristics</strong>
+            Play a card from your hand if it matches the top discard card's <strong>Color/Category</strong>, <strong>Exact Affix</strong>, <strong>Type (Prefix vs. Suffix)</strong>, or <strong>Meaning</strong>. <em>Wild cards</em> can be played anytime!
+          </div>
+          <div class="bg-white/80 p-3 rounded-xl border border-amber-100">
+            <strong class="text-rose-700 block mb-1">2. "Eat a Card" (Draw Rule)</strong>
+            If you don't have a matching card (or want another option), click the <strong>Draw Deck ("Eat a Card")</strong>. If the card you eat matches the discard pile, you can play it right away—otherwise click <strong>Pass Turn</strong>!
+          </div>
+          <div class="bg-white/80 p-3 rounded-xl border border-amber-100">
+            <strong class="text-emerald-700 block mb-1">3. Call "UNO / ONE!" &amp; Win</strong>
+            When you drop to <strong>1 card</strong>, hit the <strong>UNO! / ONE!</strong> button before the Bot catches you! Empty your hand first to win and earn <strong>+35%</strong>!
+          </div>
+        </div>
+      </div>
+
+      <!-- Color Legend -->
+      <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-xs font-semibold">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100 text-blue-800 border border-blue-200">
+          <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span> Blue: Negative / Reverse Prefixes
+        </span>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span> Green: Action / Time Prefixes
+        </span>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-800 border border-amber-200">
+          <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> Yellow: Noun-Forming Suffixes
+        </span>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-100 text-rose-800 border border-rose-200">
+          <span class="w-2.5 h-2.5 rounded-full bg-rose-600"></span> Red: Adjective / Adverb Suffixes
+        </span>
+      </div>
+
+      <!-- Game Arena -->
+      <div class="bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 rounded-3xl p-4 sm:p-6 text-white shadow-xl border border-slate-700 space-y-6">
+
+        <!-- Top Bar: Bot Hand & Info -->
+        <div class="flex flex-col items-center space-y-2">
+          <div class="flex items-center gap-3 bg-slate-800/90 px-4 py-1.5 rounded-full border border-slate-700">
+            <div class="w-7 h-7 rounded-full bg-indigo-500 flex items-center justify-center text-xs font-bold">
+              <i class="fa-solid fa-robot"></i>
+            </div>
+            <span class="text-xs sm:text-sm font-bold text-slate-200">English Bot</span>
+            <span id="bot-card-count-badge" class="px-2.5 py-0.5 rounded-full bg-indigo-600 text-white text-xs font-extrabold">
+              7 Cards
+            </span>
+          </div>
+
+          <!-- Bot Face-Down Cards -->
+          <div id="bot-hand-container" class="flex flex-wrap justify-center gap-1.5 sm:gap-2 min-h-[68px] items-center">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+
+        <!-- Middle Table: Draw Deck, Status Log, Top Discard Card -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center bg-slate-800/60 rounded-2xl p-4 border border-slate-700/80">
+          <!-- Left: Draw Deck ("Eat a Card") -->
+          <div class="md:col-span-4 flex flex-col items-center justify-center gap-2">
+            <button
+              type="button"
+              id="uno-draw-deck-btn"
+              class="group relative w-32 h-44 rounded-2xl bg-gradient-to-br from-indigo-600 via-purple-700 to-slate-900 border-2 border-amber-300/80 shadow-lg hover:scale-105 transition flex flex-col items-center justify-center p-3 text-center cursor-pointer"
+            >
+              <div class="w-12 h-12 rounded-full bg-white/15 flex items-center justify-center mb-2 group-hover:rotate-12 transition">
+                <i class="fa-solid fa-layer-group text-amber-300 text-xl"></i>
+              </div>
+              <span class="font-display font-bold text-sm text-white leading-tight">EAT A CARD</span>
+              <span class="text-[11px] text-indigo-200 mt-1">(Draw Pile: <span id="deck-remaining-count">0</span>)</span>
+            </button>
+            <button
+              type="button"
+              id="uno-pass-btn"
+              class="hidden px-4 py-1.5 rounded-xl bg-slate-700 hover:bg-slate-600 text-amber-300 border border-amber-400/50 text-xs font-bold transition cursor-pointer"
+            >
+              Pass Turn <i class="fa-solid fa-forward-step ml-1"></i>
+            </button>
+          </div>
+
+          <!-- Center: Live Turn Status & Match Indicator -->
+          <div class="md:col-span-4 flex flex-col items-center text-center space-y-3">
+            <div id="turn-indicator-pill" class="px-4 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-400 text-emerald-300 text-xs font-extrabold uppercase tracking-wider">
+              Your Turn
+            </div>
+
+            <div class="bg-slate-900/90 border border-slate-700 rounded-2xl p-3.5 w-full">
+              <p id="uno-status-message" class="text-xs sm:text-sm font-medium text-slate-200 leading-relaxed">
+                Match the top card's <strong>Color</strong>, <strong>Type (Prefix/Suffix)</strong>, or <strong>Meaning</strong>!
+              </p>
+            </div>
+
+            <!-- Active Wild Color Chooser (shown only when player plays a Wild card) -->
+            <div id="wild-color-picker" class="hidden bg-slate-900 border border-amber-400 rounded-2xl p-3 w-full space-y-2">
+              <p class="text-xs font-bold text-amber-300">Choose Active Category Color:</p>
+              <div class="grid grid-cols-2 gap-1.5">
+                <button type="button" data-wild-color="blue" class="wild-color-btn px-2 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold cursor-pointer">Blue (Neg. Prefix)</button>
+                <button type="button" data-wild-color="green" class="wild-color-btn px-2 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold cursor-pointer">Green (Act. Prefix)</button>
+                <button type="button" data-wild-color="yellow" class="wild-color-btn px-2 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold cursor-pointer">Yellow (Noun Suf.)</button>
+                <button type="button" data-wild-color="red" class="wild-color-btn px-2 py-1.5 rounded-lg bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold cursor-pointer">Red (Adj/Adv Suf.)</button>
+              </div>
+            </div>
+
+            <!-- UNO / ONE Call Button -->
+            <button
+              type="button"
+              id="uno-call-btn"
+              class="px-5 py-2 rounded-full bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-300 hover:to-orange-400 text-slate-950 font-display font-extrabold text-sm shadow-lg transition transform active:scale-95 cursor-pointer"
+            >
+              <i class="fa-solid fa-bullhorn mr-1"></i> CALL "UNO / ONE!"
+            </button>
+          </div>
+
+          <!-- Right: Current Top Discard Card -->
+          <div class="md:col-span-4 flex flex-col items-center justify-center gap-2">
+            <span class="text-[11px] uppercase tracking-wider font-bold text-slate-400">Active Discard Card</span>
+            <div id="uno-discard-slot" class="flex items-center justify-center">
+              <!-- Rendered dynamically -->
+            </div>
+            <span id="active-color-label" class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-slate-700 text-slate-200">
+              Active Color: Blue
+            </span>
+          </div>
+        </div>
+
+        <!-- Bottom: Student Hand -->
+        <div class="space-y-3">
+          <div class="flex items-center justify-between px-2">
+            <span class="text-xs sm:text-sm font-bold text-amber-300 flex items-center gap-2">
+              <i class="fa-solid fa-hand-holding-heart"></i>
+              <span id="player-hand-label">Student's Hand (7 Cards)</span>
+            </span>
+            <span class="text-xs text-slate-400">Glowing cards can be played right now</span>
+          </div>
+
+          <div id="player-hand-container" class="flex flex-wrap justify-center gap-2.5 sm:gap-3 pt-2 pb-2 min-h-[195px]">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- COMPLETION CERTIFICATE BANNER (REVEALED AT 100%)                    -->
+    <!-- =================================================================== -->
+    <section id="certificate-section" class="hidden bg-gradient-to-br from-amber-50 via-white to-indigo-50 rounded-3xl p-6 sm:p-10 shadow-xl border-4 border-amber-400 text-center space-y-5">
+      <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-amber-400 text-white text-3xl shadow-md">
+        <i class="fa-solid fa-trophy"></i>
+      </div>
+      <div>
+        <span class="text-xs font-extrabold uppercase tracking-widest text-indigo-600">English Family Official Achievement</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">Certificate of Mastery — 100% Complete!</h2>
+      </div>
+      <p class="text-slate-600 max-w-2xl mx-auto text-sm sm:text-base">
+        This certifies that <strong id="cert-student-name" class="text-indigo-700 text-lg underline decoration-amber-400 decoration-2">Student</strong> has successfully completed all three interactive parts of the <strong>English Prefixes &amp; Suffixes Assessment</strong> on <strong id="cert-date" class="text-slate-800">Date</strong>.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4 pt-2 text-xs font-bold">
+        <span class="px-4 py-2 rounded-xl bg-indigo-100 text-indigo-800"><i class="fa-solid fa-check mr-1"></i> Study Guide (30%)</span>
+        <span class="px-4 py-2 rounded-xl bg-purple-100 text-purple-800"><i class="fa-solid fa-check mr-1"></i> 30-Card Memory Match (35%)</span>
+        <span class="px-4 py-2 rounded-xl bg-emerald-100 text-emerald-800"><i class="fa-solid fa-check mr-1"></i> Prefix &amp; Suffix UNO Battle (35%)</span>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================================================================== -->
+  <!-- FOOTER                                                                -->
+  <!-- ===================================================================== -->
+  <footer class="bg-white border-t border-slate-200 py-6 mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
+      <div class="flex items-center gap-2 font-semibold text-slate-700">
+        <span class="text-indigo-600"><i class="fa-solid fa-heart"></i></span>
+        <span>English Family Learning Studio</span>
+      </div>
+      <p>Interactive Prefixes &amp; Suffixes Practice • Built for Students &amp; Teachers</p>
+    </div>
+  </footer>
+
+  <!-- ===================================================================== -->
+  <!-- CUSTOM TOAST / NOTIFICATION MODAL (NO alert() USED)                   -->
+  <!-- ===================================================================== -->
+  <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 max-w-sm w-full pointer-events-none px-4 sm:px-0"></div>
+
+  <!-- ===================================================================== -->
+  <!-- APPLICATION JAVASCRIPT                                                -->
+  <!-- ===================================================================== -->
+  <script>
+    /**
+     * =========================================================================
+     * 1. DATA DEFINITIONS (PREFIXES, SUFFIXES, MEMORY PAIRS, UNO DECK)
+     * =========================================================================
+     */
+
+    // Part 1: 20 Common Prefixes (10) & Suffixes (10) with Verbs, Examples, Sentences
+    const AFFIX_STUDY_DATA = [
+      // --- 10 PREFIXES ---
+      {
+        id: 'pre-un',
+        affix: 'un-',
+        type: 'prefix',
+        meaning: 'Not / Opposite of / Reverse action',
+        verbs: ['do → undo', 'lock → unlock', 'pack → unpack', 'wrap → unwrap'],
+        exampleWord: 'unlock',
+        sentence: 'Please unlock the classroom door before the students arrive.'
+      },
+      {
+        id: 'pre-re',
+        affix: 're-',
+        type: 'prefix',
+        meaning: 'Again / Back',
+        verbs: ['write → rewrite', 'build → rebuild', 'read → reread', 'play → replay'],
+        exampleWord: 'rewrite',
+        sentence: 'The teacher asked us to rewrite the paragraph with clearer verbs.'
+      },
+      {
+        id: 'pre-dis',
+        affix: 'dis-',
+        type: 'prefix',
+        meaning: 'Not / Opposite / Away',
+        verbs: ['agree → disagree', 'appear → disappear', 'connect → disconnect', 'like → dislike'],
+        exampleWord: 'disagree',
+        sentence: 'Good friends can politely disagree while still respecting each other.'
+      },
+      {
+        id: 'pre-pre',
+        affix: 'pre-',
+        type: 'prefix',
+        meaning: 'Before / In advance',
+        verbs: ['heat → preheat', 'view → preview', 'pay → prepay', 'arrange → prearrange'],
+        exampleWord: 'preheat',
+        sentence: 'Remember to preheat the oven to 180°C before baking the cake.'
+      },
+      {
+        id: 'pre-mis',
+        affix: 'mis-',
+        type: 'prefix',
+        meaning: 'Wrongly / Badly / Incorrectly',
+        verbs: ['understand → misunderstand', 'spell → misspell', 'lead → mislead', 'place → misplace'],
+        exampleWord: 'misunderstand',
+        sentence: 'If you speak too quickly, listeners might misunderstand your instructions.'
+      },
+      {
+        id: 'pre-over',
+        affix: 'over-',
+        type: 'prefix',
+        meaning: 'Too much / Excessive / Above',
+        verbs: ['cook → overcook', 'sleep → oversleep', 'react → overreact', 'work → overwork'],
+        exampleWord: 'oversleep',
+        sentence: 'Set two alarms so you do not oversleep on exam morning.'
+      },
+      {
+        id: 'pre-under',
+        affix: 'under-',
+        type: 'prefix',
+        meaning: 'Too little / Below / Insufficient',
+        verbs: ['estimate → underestimate', 'pay → underpay', 'cook → undercook', 'line → underline'],
+        exampleWord: 'underline',
+        sentence: 'Please underline every verb that contains a prefix in the story.'
+      },
+      {
+        id: 'pre-inter',
+        affix: 'inter-',
+        type: 'prefix',
+        meaning: 'Between / Among / Mutual',
+        verbs: ['act → interact', 'connect → interconnect', 'change → interchange', 'rupt → interrupt'],
+        exampleWord: 'interact',
+        sentence: 'Students interact in English during the card game challenge.'
+      },
+      {
+        id: 'pre-sub',
+        affix: 'sub-',
+        type: 'prefix',
+        meaning: 'Under / Beneath / Secondary',
+        verbs: ['divide → subdivide', 'merge → submerge', 'mit → submit', 'scribe → subscribe'],
+        exampleWord: 'submerge',
+        sentence: 'Submerge the pasta in boiling water for eight minutes.'
+      },
+      {
+        id: 'pre-anti',
+        affix: 'anti-',
+        type: 'prefix',
+        meaning: 'Against / Opposing',
+        verbs: ['freeze → antifreeze', 'virus → antivirus', 'social → antisocial', 'body → antibody'],
+        exampleWord: 'antivirus',
+        sentence: 'Always update your antivirus software to protect your computer.'
+      },
+
+      // --- 10 SUFFIXES ---
+      {
+        id: 'suf-able',
+        affix: '-able / -ible',
+        type: 'suffix',
+        meaning: 'Capable of being / Worthy of (Adjective)',
+        verbs: ['read → readable', 'wash → washable', 'enjoy → enjoyable', 'flex → flexible'],
+        exampleWord: 'enjoyable',
+        sentence: 'Learning grammar through games makes the lesson very enjoyable.'
+      },
+      {
+        id: 'suf-tion',
+        affix: '-tion / -sion',
+        type: 'suffix',
+        meaning: 'Act, process, or result of (Noun)',
+        verbs: ['create → creation', 'educate → education', 'decide → decision', 'discuss → discussion'],
+        exampleWord: 'education',
+        sentence: 'Education opens doors to opportunities around the world.'
+      },
+      {
+        id: 'suf-ment',
+        affix: '-ment',
+        type: 'suffix',
+        meaning: 'Action, state, or result (Noun)',
+        verbs: ['develop → development', 'agree → agreement', 'improve → improvement', 'move → movement'],
+        exampleWord: 'improvement',
+        sentence: 'Your vocabulary shows remarkable improvement this semester!'
+      },
+      {
+        id: 'suf-er',
+        affix: '-er / -or',
+        type: 'suffix',
+        meaning: 'Person or thing that performs an action (Noun)',
+        verbs: ['teach → teacher', 'write → writer', 'act → actor', 'invent → inventor'],
+        exampleWord: 'teacher',
+        sentence: 'Our English teacher encourages the whole English Family to practice daily.'
+      },
+      {
+        id: 'suf-ful',
+        affix: '-ful',
+        type: 'suffix',
+        meaning: 'Full of / Having qualities of (Adjective)',
+        verbs: ['help → helpful', 'thank → thankful', 'use → useful', 'care → careful'],
+        exampleWord: 'helpful',
+        sentence: 'A dictionary is a helpful tool when exploring new root verbs.'
+      },
+      {
+        id: 'suf-less',
+        affix: '-less',
+        type: 'suffix',
+        meaning: 'Without / Lacking (Adjective)',
+        verbs: ['care → careless', 'fear → fearless', 'use → useless', 'end → endless'],
+        exampleWord: 'fearless',
+        sentence: 'Be fearless when speaking English—mistakes help you grow!'
+      },
+      {
+        id: 'suf-ly',
+        affix: '-ly',
+        type: 'suffix',
+        meaning: 'In a certain manner or way (Adverb)',
+        verbs: ['quick → quickly', 'careful → carefully', 'happy → happily', 'clear → clearly'],
+        exampleWord: 'clearly',
+        sentence: 'She explained the prefix rules clearly to her classmates.'
+      },
+      {
+        id: 'suf-ing',
+        affix: '-ing',
+        type: 'suffix',
+        meaning: 'Continuous action or gerund (Verb/Noun)',
+        verbs: ['learn → learning', 'play → playing', 'build → building', 'read → reading'],
+        exampleWord: 'learning',
+        sentence: 'We are learning how prefixes change the direction of a verb.'
+      },
+      {
+        id: 'suf-ed',
+        affix: '-ed',
+        type: 'suffix',
+        meaning: 'Past tense action or completed state (Verb/Adj)',
+        verbs: ['finish → finished', 'paint → painted', 'unlock → unlocked', 'help → helped'],
+        exampleWord: 'finished',
+        sentence: 'Marco finished all fifteen pairs in the memory challenge!'
+      },
+      {
+        id: 'suf-ize',
+        affix: '-ize / -ise',
+        type: 'suffix',
+        meaning: 'To make or become (Verb)',
+        verbs: ['organ → organize', 'modern → modernize', 'memorize', 'real → realize'],
+        exampleWord: 'organize',
+        sentence: 'Let us organize these flashcards into prefixes and suffixes.'
+      }
+    ];
+
+    // Part 2: 15 Pairs (= 30 Cards) for Memory Matching Game
+    const MEMORY_PAIRS_DATA = [
+      { pairId: 1, leftTitle: 'UN- (Prefix)', leftSub: 'Verb: do → undo', rightTitle: 'Not / Reverse Action', rightSub: 'Ex: unlock, unpack' },
+      { pairId: 2, leftTitle: 'RE- (Prefix)', leftSub: 'Verb: write → rewrite', rightTitle: 'Do Again / Back', rightSub: 'Ex: rebuild, replay' },
+      { pairId: 3, leftTitle: 'DIS- (Prefix)', leftSub: 'Verb: agree → disagree', rightTitle: 'Opposite / Not', rightSub: 'Ex: disappear, disconnect' },
+      { pairId: 4, leftTitle: 'PRE- (Prefix)', leftSub: 'Verb: heat → preheat', rightTitle: 'Before / In Advance', rightSub: 'Ex: preview, prepay' },
+      { pairId: 5, leftTitle: 'MIS- (Prefix)', leftSub: 'Verb: spell → misspell', rightTitle: 'Wrongly / Incorrectly', rightSub: 'Ex: misunderstand, mislead' },
+      { pairId: 6, leftTitle: 'OVER- (Prefix)', leftSub: 'Verb: sleep → oversleep', rightTitle: 'Too Much / Excessive', rightSub: 'Ex: overcook, overreact' },
+      { pairId: 7, leftTitle: 'UNDER- (Prefix)', leftSub: 'Verb: line → underline', rightTitle: 'Below / Too Little', rightSub: 'Ex: underestimate, underpay' },
+      { pairId: 8, leftTitle: 'INTER- (Prefix)', leftSub: 'Verb: act → interact', rightTitle: 'Between / Among', rightSub: 'Ex: interconnect, interrupt' },
+      { pairId: 9, leftTitle: '-ABLE (Suffix)', leftSub: 'Verb: read → readable', rightTitle: 'Capable of Being', rightSub: 'Ex: washable, enjoyable' },
+      { pairId: 10, leftTitle: '-TION (Suffix)', leftSub: 'Verb: create → creation', rightTitle: 'Act or Process (Noun)', rightSub: 'Ex: education, celebration' },
+      { pairId: 11, leftTitle: '-MENT (Suffix)', leftSub: 'Verb: improve → improvement', rightTitle: 'State or Result (Noun)', rightSub: 'Ex: development, agreement' },
+      { pairId: 12, leftTitle: '-ER / -OR (Suffix)', leftSub: 'Verb: teach → teacher', rightTitle: 'Person Who Does Action', rightSub: 'Ex: writer, actor, inventor' },
+      { pairId: 13, leftTitle: '-FUL (Suffix)', leftSub: 'Verb: help → helpful', rightTitle: 'Full of / Having Quality', rightSub: 'Ex: thankful, careful, useful' },
+      { pairId: 14, leftTitle: '-LESS (Suffix)', leftSub: 'Verb: fear → fearless', rightTitle: 'Without / Lacking', rightSub: 'Ex: careless, endless' },
+      { pairId: 15, leftTitle: '-LY (Suffix)', leftSub: 'Adj: clear → clearly', rightTitle: 'In What Manner (Adverb)', rightSub: 'Ex: quickly, happily' }
+    ];
+
+    /**
+     * =========================================================================
+     * 2. GLOBAL STATE & PROGRESS TRACKING
+     * =========================================================================
+     */
+    const appState = {
+      part1Completed: false, // 30%
+      part2PairsMatched: 0,   // up to 15 pairs -> 35%
+      part2Completed: false,
+      part3Completed: false   // 35%
+    };
+
+    function calculateTotalProgress() {
+      let total = 0;
+      if (appState.part1Completed) total += 30;
+      // Proportional progress for Memory Game (0 to 35%)
+      const part2Pct = Math.round((appState.part2PairsMatched / 15) * 35);
+      total += part2Pct;
+      if (appState.part3Completed) total += 35;
+      return Math.min(100, total);
+    }
+
+    function updateGlobalProgressUI() {
+      const pct = calculateTotalProgress();
+      const bar = document.getElementById('global-progress-bar');
+      const pctText = document.getElementById('progress-percent-text');
+      const mobileBadge = document.getElementById('header-score-badge');
+      const summaryText = document.getElementById('status-summary-text');
+
+      bar.style.width = `${pct}%`;
+      pctText.textContent = `${pct}%`;
+      mobileBadge.textContent = `Progress: ${pct}%`;
+
+      let completedParts = 0;
+      if (appState.part1Completed) completedParts++;
+      if (appState.part2Completed) completedParts++;
+      if (appState.part3Completed) completedParts++;
+
+      summaryText.textContent = `${completedParts} of 3 parts completed`;
+
+      // Update Introduction step badges
+      if (appState.part1Completed) {
+        const b1 = document.getElementById('intro-badge-1');
+        b1.innerHTML = '<i class="fa-solid fa-check"></i>';
+        b1.className = 'mt-0.5 w-5 h-5 rounded-full bg-emerald-600 text-white text-xs font-bold flex items-center justify-center shrink-0';
+      }
+      if (appState.part2Completed) {
+        const b2 = document.getElementById('intro-badge-2');
+        b2.innerHTML = '<i class="fa-solid fa-check"></i>';
+        b2.className = 'mt-0.5 w-5 h-5 rounded-full bg-emerald-600 text-white text-xs font-bold flex items-center justify-center shrink-0';
+      }
+      if (appState.part3Completed) {
+        const b3 = document.getElementById('intro-badge-3');
+        b3.innerHTML = '<i class="fa-solid fa-check"></i>';
+        b3.className = 'mt-0.5 w-5 h-5 rounded-full bg-emerald-600 text-white text-xs font-bold flex items-center justify-center shrink-0';
+      }
+
+      // Reveal Certificate at 100%
+      if (pct === 100) {
+        revealCertificate();
+      }
+    }
+
+    function revealCertificate() {
+      const certSection = document.getElementById('certificate-section');
+      const nameVal = document.getElementById('student-name-input').value.trim() || 'English Family Star Student';
+      const dateVal = document.getElementById('test-date-input').value || new Date().toLocaleDateString();
+
+      document.getElementById('cert-student-name').textContent = nameVal;
+      document.getElementById('cert-date').textContent = dateVal;
+      certSection.classList.remove('hidden');
+      certSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function showToast(message, type = 'info') {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      const styles = {
+        success: 'bg-emerald-600 text-white border-emerald-500',
+        info: 'bg-indigo-600 text-white border-indigo-500',
+        warning: 'bg-amber-500 text-slate-950 border-amber-400'
+      };
+      const icons = {
+        success: 'fa-circle-check',
+        info: 'fa-circle-info',
+        warning: 'fa-triangle-exclamation'
+      };
+
+      toast.className = `pointer-events-auto flex items-center gap-3 px-4 py-3 rounded-2xl shadow-xl border text-xs sm:text-sm font-semibold transition-all duration-300 transform translate-y-2 opacity-0 ${styles[type] || styles.info}`;
+      toast.innerHTML = `<i class="fa-solid ${icons[type] || icons.info} text-base"></i><span>${message}</span>`;
+
+      container.appendChild(toast);
+      requestAnimationFrame(() => {
+        toast.classList.remove('translate-y-2', 'opacity-0');
+      });
+
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'translate-y-2');
+        setTimeout(() => toast.remove(), 300);
+      }, 3400);
+    }
+
+    /**
+     * =========================================================================
+     * 3. PART 1: STUDY GUIDE RENDERING & INTERACTION
+     * =========================================================================
+     */
+    let currentAffixFilter = 'all';
+
+    function renderStudyCards() {
+      const grid = document.getElementById('affix-cards-grid');
+      const searchQuery = document.getElementById('affix-search-input').value.trim().toLowerCase();
+      grid.innerHTML = '';
+
+      const filtered = AFFIX_STUDY_DATA.filter(item => {
+        const matchesType = currentAffixFilter === 'all' || item.type === currentAffixFilter;
+        const matchesSearch =
+          !searchQuery ||
+          item.affix.toLowerCase().includes(searchQuery) ||
+          item.meaning.toLowerCase().includes(searchQuery) ||
+          item.verbs.some(v => v.toLowerCase().includes(searchQuery)) ||
+          item.sentence.toLowerCase().includes(searchQuery);
+        return matchesType && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full text-center py-10 text-slate-400">
+            <i class="fa-solid fa-magnifying-glass text-2xl mb-2"></i>
+            <p class="text-sm font-medium">No prefixes or suffixes matched "${searchQuery}".</p>
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(item => {
+        const isPrefix = item.type === 'prefix';
+        const badgeClass = isPrefix
+          ? 'bg-indigo-100 text-indigo-700 border-indigo-200'
+          : 'bg-emerald-100 text-emerald-700 border-emerald-200';
+        const accentBorder = isPrefix ? 'hover:border-indigo-300' : 'hover:border-emerald-300';
+
+        const card = document.createElement('article');
+        card.className = `rounded-2xl border border-slate-200 bg-slate-50/60 p-4 flex flex-col justify-between transition shadow-xs hover:shadow-md ${accentBorder}`;
+
+        card.innerHTML = `
+          <div class="space-y-2.5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="font-display text-xl font-extrabold ${isPrefix ? 'text-indigo-700' : 'text-emerald-700'}">
+                ${item.affix}
+              </span>
+              <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider border ${badgeClass}">
+                ${item.type}
+              </span>
+            </div>
+
+            <p class="text-xs font-semibold text-slate-700 bg-white px-3 py-1.5 rounded-xl border border-slate-200/80">
+              <span class="text-slate-400 uppercase text-[10px] block">Meaning</span>
+              ${item.meaning}
+            </p>
+
+            <div>
+              <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-1">Common Verbs &amp; Roots</span>
+              <div class="flex flex-wrap gap-1.5">
+                ${item.verbs
+                  .map(
+                    v => `<span class="px-2 py-0.5 rounded-lg bg-white border border-slate-200 text-xs font-medium text-slate-700">${v}</span>`
+                  )
+                  .join('')}
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-3 pt-2.5 border-t border-slate-200/80 text-xs text-slate-600 italic">
+            <i class="fa-solid fa-quote-left text-slate-300 mr-1"></i>${item.sentence}
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    /**
+     * =========================================================================
+     * 4. PART 2: 30-CARD MEMORY MATCH GAME
+     * =========================================================================
+     */
+    let memoryCards = [];
+    let flippedIndices = [];
+    let matchedPairIds = new Set();
+    let memoryMoves = 0;
+    let lockMemoryBoard = false;
+
+    function shuffleArray(arr) {
+      const copy = [...arr];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    function initMemoryGame() {
+      flippedIndices = [];
+      matchedPairIds = new Set();
+      memoryMoves = 0;
+      lockMemoryBoard = false;
+
+      document.getElementById('memory-moves-count').textContent = '0';
+      document.getElementById('memory-pairs-count').textContent = '0';
+      document.getElementById('memory-feedback-text').textContent = 'Flip any two cards to find matching Prefix/Suffix pairs!';
+
+      // Build 30 cards (2 per pair)
+      const rawDeck = [];
+      MEMORY_PAIRS_DATA.forEach(pair => {
+        rawDeck.push({
+          uid: `${pair.pairId}-A`,
+          pairId: pair.pairId,
+          side: 'affix',
+          title: pair.leftTitle,
+          subtitle: pair.leftSub
+        });
+        rawDeck.push({
+          uid: `${pair.pairId}-B`,
+          pairId: pair.pairId,
+          side: 'meaning',
+          title: pair.rightTitle,
+          subtitle: pair.rightSub
+        });
+      });
+
+      memoryCards = shuffleArray(rawDeck);
+      renderMemoryBoard();
+    }
+
+    function renderMemoryBoard() {
+      const board = document.getElementById('memory-board');
+      board.innerHTML = '';
+
+      memoryCards.forEach((card, idx) => {
+        const isMatched = matchedPairIds.has(card.pairId);
+        const isFlipped = isMatched || flippedIndices.includes(idx);
+
+        const cardWrapper = document.createElement('button');
+        cardWrapper.type = 'button';
+        cardWrapper.className = 'perspective-1000 h-28 sm:h-32 w-full text-left focus:outline-none cursor-pointer group';
+        cardWrapper.setAttribute('aria-label', `Flashcard ${idx + 1}`);
+        cardWrapper.addEventListener('click', () => handleMemoryCardClick(idx));
+
+        const inner = document.createElement('div');
+        inner.id = `mem-card-inner-${idx}`;
+        inner.className = `relative w-full h-full transform-style-3d rounded-2xl shadow-sm ${isFlipped ? 'rotate-y-180' : ''}`;
+
+        // Front face (hidden initially)
+        const front = document.createElement('div');
+        front.className = `absolute inset-0 backface-hidden rounded-2xl bg-gradient-to-br from-purple-600 to-indigo-700 text-white flex flex-col items-center justify-center p-2 border-2 border-purple-400/50 group-hover:brightness-110 transition`;
+        front.innerHTML = `
+          <span class="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center text-xs font-extrabold mb-1">
+            #${idx + 1}
+          </span>
+          <span class="font-display text-xs font-bold tracking-wide text-purple-100">English Family</span>
+        `;
+
+        // Back face (revealed when flipped)
+        const backBg = isMatched
+          ? 'bg-emerald-50 border-emerald-400 text-emerald-950'
+          : card.side === 'affix'
+          ? 'bg-indigo-50 border-indigo-300 text-indigo-950'
+          : 'bg-amber-50 border-amber-300 text-amber-950';
+
+        const badgeLabel = card.side === 'affix' ? 'AFFIX + VERB' : 'MEANING';
+        const badgeColor = isMatched
+          ? 'bg-emerald-200 text-emerald-900'
+          : card.side === 'affix'
+          ? 'bg-indigo-200 text-indigo-900'
+          : 'bg-amber-200 text-amber-900';
+
+        const back = document.createElement('div');
+        back.id = `mem-card-back-${idx}`;
+        back.className = `absolute inset-0 backface-hidden rotate-y-180 rounded-2xl border-2 p-2.5 flex flex-col justify-between ${backBg}`;
+        back.innerHTML = `
+          <div class="flex items-center justify-between">
+            <span class="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded ${badgeColor}">${badgeLabel}</span>
+            ${isMatched ? '<i class="fa-solid fa-circle-check text-emerald-600 text-xs"></i>' : ''}
+          </div>
+          <div class="text-center my-auto">
+            <p class="font-display font-bold text-xs sm:text-sm leading-tight">${card.title}</p>
+            <p class="text-[11px] opacity-80 mt-1 leading-tight">${card.subtitle}</p>
+          </div>
+        `;
+
+        inner.appendChild(front);
+        inner.appendChild(back);
+        cardWrapper.appendChild(inner);
+        board.appendChild(cardWrapper);
+      });
+    }
+
+    function handleMemoryCardClick(idx) {
+      if (lockMemoryBoard) return;
+      const card = memoryCards[idx];
+      if (matchedPairIds.has(card.pairId)) return;
+      if (flippedIndices.includes(idx)) return;
+
+      flippedIndices.push(idx);
+      const innerEl = document.getElementById(`mem-card-inner-${idx}`);
+      if (innerEl) innerEl.classList.add('rotate-y-180');
+
+      if (flippedIndices.length === 2) {
+        memoryMoves++;
+        document.getElementById('memory-moves-count').textContent = String(memoryMoves);
+        lockMemoryBoard = true;
+
+        const [firstIdx, secondIdx] = flippedIndices;
+        const firstCard = memoryCards[firstIdx];
+        const secondCard = memoryCards[secondIdx];
+
+        if (firstCard.pairId === secondCard.pairId) {
+          // Match found!
+          matchedPairIds.add(firstCard.pairId);
+          flippedIndices = [];
+          lockMemoryBoard = false;
+
+          appState.part2PairsMatched = matchedPairIds.size;
+          document.getElementById('memory-pairs-count').textContent = String(matchedPairIds.size);
+          document.getElementById('memory-feedback-text').innerHTML = `<strong>Great match!</strong> ${firstCard.title} ↔ ${secondCard.title} (${secondCard.subtitle})`;
+
+          // Re-render to apply matched styling
+          renderMemoryBoard();
+
+          if (matchedPairIds.size === 15 && !appState.part2Completed) {
+            appState.part2Completed = true;
+            showToast('Congratulations! All 15 pairs matched (+35% progress)!', 'success');
+          }
+          updateGlobalProgressUI();
+        } else {
+          // Not a match -> flip back after short delay
+          document.getElementById('memory-feedback-text').textContent = 'Not a match—keep looking for the matching meaning or affix!';
+          setTimeout(() => {
+            const el1 = document.getElementById(`mem-card-inner-${firstIdx}`);
+            const el2 = document.getElementById(`mem-card-inner-${secondIdx}`);
+            if (el1) el1.classList.remove('rotate-y-180');
+            if (el2) el2.classList.remove('rotate-y-180');
+            flippedIndices = [];
+            lockMemoryBoard = false;
+          }, 950);
+        }
+      }
+    }
+
+    /**
+     * =========================================================================
+     * 5. PART 3: UNO / ONE STYLE CARD GAME VS. BOT
+     * =========================================================================
+     */
+    const UNO_BASE_CARDS = [
+      // Blue: Negative / Reverse Prefixes
+      { color: 'blue', affix: 'UN-', type: 'Prefix', meaning: 'Not / Opposite', verb: 'do → undo' },
+      { color: 'blue', affix: 'DIS-', type: 'Prefix', meaning: 'Opposite / Away', verb: 'agree → disagree' },
+      { color: 'blue', affix: 'MIS-', type: 'Prefix', meaning: 'Wrongly / Badly', verb: 'spell → misspell' },
+      { color: 'blue', affix: 'ANTI-', type: 'Prefix', meaning: 'Against', verb: 'freeze → antifreeze' },
+      { color: 'blue', affix: 'UN-', type: 'Prefix', meaning: 'Reverse Action', verb: 'lock → unlock' },
+      { color: 'blue', affix: 'DIS-', type: 'Prefix', meaning: 'Not / Opposite', verb: 'connect → disconnect' },
+
+      // Green: Action / Time / Position Prefixes
+      { color: 'green', affix: 'RE-', type: 'Prefix', meaning: 'Again / Back', verb: 'write → rewrite' },
+      { color: 'green', affix: 'PRE-', type: 'Prefix', meaning: 'Before', verb: 'heat → preheat' },
+      { color: 'green', affix: 'OVER-', type: 'Prefix', meaning: 'Too Much', verb: 'sleep → oversleep' },
+      { color: 'green', affix: 'UNDER-', type: 'Prefix', meaning: 'Below / Little', verb: 'line → underline' },
+      { color: 'green', affix: 'INTER-', type: 'Prefix', meaning: 'Between / Among', verb: 'act → interact' },
+      { color: 'green', affix: 'SUB-', type: 'Prefix', meaning: 'Under / Beneath', verb: 'merge → submerge' },
+
+      // Yellow: Noun-Forming Suffixes
+      { color: 'yellow', affix: '-TION', type: 'Suffix', meaning: 'Process / Result', verb: 'create → creation' },
+      { color: 'yellow', affix: '-MENT', type: 'Suffix', meaning: 'State / Result', verb: 'develop → development' },
+      { color: 'yellow', affix: '-ER', type: 'Suffix', meaning: 'Person Who Acts', verb: 'teach → teacher' },
+      { color: 'yellow', affix: '-OR', type: 'Suffix', meaning: 'Person Who Acts', verb: 'invent → inventor' },
+      { color: 'yellow', affix: '-ING', type: 'Suffix', meaning: 'Ongoing Action', verb: 'learn → learning' },
+      { color: 'yellow', affix: '-SION', type: 'Suffix', meaning: 'Process / Result', verb: 'decide → decision' },
+
+      // Red: Adjective / Adverb / Verb Suffixes
+      { color: 'red', affix: '-ABLE', type: 'Suffix', meaning: 'Capable Of', verb: 'read → readable' },
+      { color: 'red', affix: '-FUL', type: 'Suffix', meaning: 'Full Of Quality', verb: 'help → helpful' },
+      { color: 'red', affix: '-LESS', type: 'Suffix', meaning: 'Without / Lacking', verb: 'fear → fearless' },
+      { color: 'red', affix: '-LY', type: 'Suffix', meaning: 'In What Manner', verb: 'clear → clearly' },
+      { color: 'red', affix: '-ED', type: 'Suffix', meaning: 'Completed State', verb: 'finish → finished' },
+      { color: 'red', affix: '-IZE', type: 'Suffix', meaning: 'Make / Become', verb: 'organ → organize' }
+    ];
+
+    let unoDeck = [];
+    let unoDiscard = [];
+    let playerHand = [];
+    let botHand = [];
+    let activeUnoColor = 'blue';
+    let isPlayerTurn = true;
+    let hasDrawnThisTurn = false;
+    let unoCalledByPlayer = false;
+    let unoGameOver = false;
+    let pendingWildCardIndex = null;
+
+    function buildUnoDeck() {
+      const deck = [];
+      // Duplicate base cards x2 (48 cards) + 4 Wild cards = 52 cards
+      let uidCounter = 1;
+      for (let copy = 0; copy < 2; copy++) {
+        UNO_BASE_CARDS.forEach(c => {
+          deck.push({ ...c, id: `uno-${uidCounter++}` });
+        });
+      }
+      for (let w = 0; w < 4; w++) {
+        deck.push({
+          id: `uno-wild-${w + 1}`,
+          color: 'wild',
+          affix: 'WILD AFFIX',
+          type: 'Wild',
+          meaning: 'Any Prefix or Suffix',
+          verb: 'Change Category!'
+        });
+      }
+      return shuffleArray(deck);
+    }
+
+    function drawFromUnoDeck() {
+      if (unoDeck.length === 0) {
+        if (unoDiscard.length <= 1) return null;
+        const topCard = unoDiscard.pop();
+        unoDeck = shuffleArray(unoDiscard);
+        unoDiscard = [topCard];
+        showToast('Reshuffled discard pile into the Draw Deck!', 'info');
+      }
+      return unoDeck.pop();
+    }
+
+    function canPlayCardOnTop(card, topCard, currentColor) {
+      if (!card || !topCard) return false;
+      if (card.color === 'wild') return true;
+      if (card.color === currentColor) return true;
+      if (card.affix === topCard.affix) return true;
+      if (topCard.type !== 'Wild' && card.type === topCard.type) return true;
+      if (card.meaning === topCard.meaning) return true;
+      return false;
+    }
+
+    function initUnoGame() {
+      unoDeck = buildUnoDeck();
+      unoDiscard = [];
+      playerHand = [];
+      botHand = [];
+      isPlayerTurn = true;
+      hasDrawnThisTurn = false;
+      unoCalledByPlayer = false;
+      unoGameOver = false;
+      pendingWildCardIndex = null;
+
+      document.getElementById('wild-color-picker').classList.add('hidden');
+      document.getElementById('uno-pass-btn').classList.add('hidden');
+
+      // Deal 7 cards each
+      for (let i = 0; i < 7; i++) {
+        playerHand.push(drawFromUnoDeck());
+        botHand.push(drawFromUnoDeck());
+      }
+
+      // Start discard pile with a non-wild card
+      let starter = drawFromUnoDeck();
+      while (starter && starter.color === 'wild') {
+        unoDeck.unshift(starter);
+        starter = drawFromUnoDeck();
+      }
+      unoDiscard.push(starter);
+      activeUnoColor = starter.color;
+
+      setUnoStatus(`Game started! Match <strong>${starter.affix}</strong> (${starter.type} • ${starter.color.toUpperCase()}) or eat a card from the deck.`);
+      renderUnoTable();
+    }
+
+    function setUnoStatus(htmlMsg) {
+      document.getElementById('uno-status-message').innerHTML = htmlMsg;
+    }
+
+    function getCardThemeClasses(color) {
+      switch (color) {
+        case 'blue':
+          return {
+            bg: 'bg-gradient-to-br from-blue-500 to-blue-700 border-blue-300 text-white',
+            pill: 'bg-blue-900/50 text-blue-100'
+          };
+        case 'green':
+          return {
+            bg: 'bg-gradient-to-br from-emerald-500 to-emerald-700 border-emerald-300 text-white',
+            pill: 'bg-emerald-900/50 text-emerald-100'
+          };
+        case 'yellow':
+          return {
+            bg: 'bg-gradient-to-br from-amber-400 to-amber-500 border-amber-200 text-slate-950',
+            pill: 'bg-amber-900/20 text-slate-900'
+          };
+        case 'red':
+          return {
+            bg: 'bg-gradient-to-br from-rose-500 to-rose-700 border-rose-300 text-white',
+            pill: 'bg-rose-900/50 text-rose-100'
+          };
+        default:
+          return {
+            bg: 'bg-gradient-to-br from-violet-600 via-fuchsia-600 to-amber-500 border-amber-200 text-white',
+            pill: 'bg-black/35 text-amber-200'
+          };
+      }
+    }
+
+    function createUnoCardElement(card, playable = false, onClick = null) {
+      const theme = getCardThemeClasses(card.color);
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.disabled = !playable;
+      el.className = `uno-card w-32 sm:w-36 h-44 sm:h-48 rounded-2xl border-2 p-2.5 flex flex-col justify-between text-left shadow-lg select-none ${theme.bg} ${
+        playable
+          ? 'uno-card-playable ring-2 ring-amber-300/90 cursor-pointer'
+          : 'opacity-85 cursor-not-allowed'
+      }`;
+
+      el.innerHTML = `
+        <div class="flex items-center justify-between gap-1">
+          <span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider ${theme.pill}">
+            ${card.type}
+          </span>
+          <span class="text-[10px] font-bold uppercase opacity-90">${card.color}</span>
+        </div>
+
+        <div class="bg-white/95 text-slate-900 rounded-xl p-2 text-center shadow-inner my-auto">
+          <div class="font-display font-extrabold text-base sm:text-lg tracking-tight text-slate-900">
+            ${card.affix}
+          </div>
+          <div class="text-[10px] font-bold text-indigo-700 mt-0.5 leading-tight">
+            ${card.meaning}
+          </div>
+        </div>
+
+        <div class="text-[10px] font-semibold text-center truncate opacity-95">
+          ${card.verb}
+        </div>
+      `;
+
+      if (playable && onClick) {
+        el.addEventListener('click', onClick);
+      }
+      return el;
+    }
+
+    function renderUnoTable() {
+      const topCard = unoDiscard[unoDiscard.length - 1];
+
+      // 1. Update counts & turn pill
+      document.getElementById('deck-remaining-count').textContent = String(unoDeck.length);
+      document.getElementById('bot-card-count-badge').textContent = `${botHand.length} Card${botHand.length === 1 ? '' : 's'}`;
+      document.getElementById('player-hand-label').textContent = `Student's Hand (${playerHand.length} Card${playerHand.length === 1 ? '' : 's'})`;
+
+      const turnPill = document.getElementById('turn-indicator-pill');
+      if (unoGameOver) {
+        turnPill.textContent = 'Match Finished';
+        turnPill.className = 'px-4 py-1.5 rounded-full bg-amber-500/20 border border-amber-400 text-amber-300 text-xs font-extrabold uppercase tracking-wider';
+      } else if (isPlayerTurn) {
+        turnPill.textContent = 'Your Turn';
+        turnPill.className = 'px-4 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-400 text-emerald-300 text-xs font-extrabold uppercase tracking-wider';
+      } else {
+        turnPill.textContent = 'Bot Thinking...';
+        turnPill.className = 'px-4 py-1.5 rounded-full bg-indigo-500/20 border border-indigo-400 text-indigo-300 text-xs font-extrabold uppercase tracking-wider';
+      }
+
+      // 2. Render Bot face-down hand
+      const botContainer = document.getElementById('bot-hand-container');
+      botContainer.innerHTML = '';
+      botHand.forEach(() => {
+        const back = document.createElement('div');
+        back.className = 'w-11 h-16 sm:w-12 sm:h-18 rounded-xl bg-gradient-to-br from-indigo-600 to-purple-800 border border-indigo-300/60 shadow flex items-center justify-center';
+        back.innerHTML = '<span class="font-display text-[10px] font-bold text-amber-300">EF</span>';
+        botContainer.appendChild(back);
+      });
+
+      // 3. Render Top Discard Card & Active Color label
+      const discardSlot = document.getElementById('uno-discard-slot');
+      discardSlot.innerHTML = '';
+      if (topCard) {
+        const displayCard = { ...topCard, color: activeUnoColor };
+        discardSlot.appendChild(createUnoCardElement(displayCard, false));
+      }
+
+      const colorNames = {
+        blue: 'Blue (Negative Prefixes)',
+        green: 'Green (Action Prefixes)',
+        yellow: 'Yellow (Noun Suffixes)',
+        red: 'Red (Adj/Adv Suffixes)'
+      };
+      document.getElementById('active-color-label').textContent = `Active: ${colorNames[activeUnoColor] || activeUnoColor.toUpperCase()}`;
+
+      // 4. Render Player Hand
+      const playerContainer = document.getElementById('player-hand-container');
+      playerContainer.innerHTML = '';
+      playerHand.forEach((card, index) => {
+        const playable = isPlayerTurn && !unoGameOver && pendingWildCardIndex === null && canPlayCardOnTop(card, topCard, activeUnoColor);
+        const cardEl = createUnoCardElement(card, playable, () => handlePlayerPlayCard(index));
+        playerContainer.appendChild(cardEl);
+      });
+
+      // Highlight UNO button if player has 1 or 2 cards
+      const unoBtn = document.getElementById('uno-call-btn');
+      if (playerHand.length === 1 && !unoCalledByPlayer && !unoGameOver) {
+        unoBtn.classList.add('animate-pulse-glow');
+      } else {
+        unoBtn.classList.remove('animate-pulse-glow');
+      }
+    }
+
+    function handlePlayerPlayCard(index) {
+      if (!isPlayerTurn || unoGameOver || pendingWildCardIndex !== null) return;
+      const card = playerHand[index];
+      const topCard = unoDiscard[unoDiscard.length - 1];
+
+      if (!canPlayCardOnTop(card, topCard, activeUnoColor)) return;
+
+      // If Wild card, ask player to pick the new active category color
+      if (card.color === 'wild') {
+        pendingWildCardIndex = index;
+        document.getElementById('wild-color-picker').classList.remove('hidden');
+        setUnoStatus('You played a <strong>WILD AFFIX</strong> card! Choose the new category color above.');
+        renderUnoTable();
+        return;
+      }
+
+      executePlayerCardPlay(index, card.color);
+    }
+
+    function executePlayerCardPlay(index, chosenColor) {
+      const [playedCard] = playerHand.splice(index, 1);
+      unoDiscard.push(playedCard);
+      activeUnoColor = chosenColor;
+      hasDrawnThisTurn = false;
+      pendingWildCardIndex = null;
+      document.getElementById('wild-color-picker').classList.add('hidden');
+      document.getElementById('uno-pass-btn').classList.add('hidden');
+
+      if (playerHand.length > 1) {
+        unoCalledByPlayer = false;
+      }
+
+      // Check if player won
+      if (playerHand.length === 0) {
+        unoGameOver = true;
+        setUnoStatus('🎉 <strong>VICTORY!</strong> You emptied your hand and defeated the English Bot!');
+        renderUnoTable();
+        if (!appState.part3Completed) {
+          appState.part3Completed = true;
+          showToast('You won the UNO Affix Battle! +35% progress awarded!', 'success');
+          updateGlobalProgressUI();
+        }
+        return;
+      }
+
+      // Check UNO penalty if down to 1 card without calling UNO
+      if (playerHand.length === 1 && !unoCalledByPlayer) {
+        setUnoStatus(`You played <strong>${playedCard.affix}</strong> (${playedCard.meaning}). Quick—click <strong>CALL "UNO / ONE!"</strong> before the Bot catches you!`);
+      } else {
+        setUnoStatus(`You played <strong>${playedCard.affix}</strong> (${playedCard.type}: ${playedCard.meaning}). Bot's turn...`);
+      }
+
+      isPlayerTurn = false;
+      renderUnoTable();
+      setTimeout(runBotTurn, 1150);
+    }
+
+    function handlePlayerEatCard() {
+      if (!isPlayerTurn || unoGameOver || pendingWildCardIndex !== null) return;
+
+      if (hasDrawnThisTurn) {
+        showToast('You already ate a card this turn! Play a matching card or click Pass Turn.', 'warning');
+        return;
+      }
+
+      const drawn = drawFromUnoDeck();
+      if (!drawn) {
+        setUnoStatus('No cards left in deck—passing turn to Bot.');
+        isPlayerTurn = false;
+        renderUnoTable();
+        setTimeout(runBotTurn, 900);
+        return;
+      }
+
+      playerHand.push(drawn);
+      hasDrawnThisTurn = true;
+      unoCalledByPlayer = false;
+
+      const topCard = unoDiscard[unoDiscard.length - 1];
+      const isMatch = canPlayCardOnTop(drawn, topCard, activeUnoColor);
+
+      if (isMatch) {
+        setUnoStatus(`You ate <strong>${drawn.affix}</strong> (${drawn.meaning}) — <strong>It matches!</strong> Click it to play or Pass Turn.`);
+      } else {
+        setUnoStatus(`You ate <strong>${drawn.affix}</strong> (${drawn.type}) — no match. Click <strong>Pass Turn</strong>.`);
+      }
+
+      document.getElementById('uno-pass-btn').classList.remove('hidden');
+      renderUnoTable();
+    }
+
+    function handlePlayerPassTurn() {
+      if (!isPlayerTurn || unoGameOver || !hasDrawnThisTurn) return;
+      hasDrawnThisTurn = false;
+      document.getElementById('uno-pass-btn').classList.add('hidden');
+      isPlayerTurn = false;
+      setUnoStatus('You passed your turn. English Bot is checking its cards...');
+      renderUnoTable();
+      setTimeout(runBotTurn, 1000);
+    }
+
+    function handleUnoCall() {
+      if (unoGameOver) return;
+      if (playerHand.length <= 2) {
+        unoCalledByPlayer = true;
+        showToast('You shouted "UNO / ONE!" Safe from penalty!', 'success');
+        renderUnoTable();
+      } else {
+        showToast('You can call "UNO / ONE!" when you are down to 1 or 2 cards!', 'info');
+      }
+    }
+
+    function runBotTurn() {
+      if (unoGameOver) return;
+
+      // Penalty check if student forgot to call UNO when at 1 card
+      if (playerHand.length === 1 && !unoCalledByPlayer) {
+        const penaltyCard = drawFromUnoDeck();
+        if (penaltyCard) {
+          playerHand.push(penaltyCard);
+          showToast('Bot caught you! You forgot to call "UNO / ONE!" (+1 penalty card)', 'warning');
+        }
+      }
+
+      const topCard = unoDiscard[unoDiscard.length - 1];
+      const playableIndex = botHand.findIndex(c => canPlayCardOnTop(c, topCard, activeUnoColor));
+
+      if (playableIndex !== -1) {
+        const [botCard] = botHand.splice(playableIndex, 1);
+        unoDiscard.push(botCard);
+
+        if (botCard.color === 'wild') {
+          // Bot picks its most abundant color
+          const counts = { blue: 0, green: 0, yellow: 0, red: 0 };
+          botHand.forEach(c => {
+            if (counts[c.color] !== undefined) counts[c.color]++;
+          });
+          activeUnoColor = Object.entries(counts).sort((a, b) => b[1] - a[1])[0][0];
+        } else {
+          activeUnoColor = botCard.color;
+        }
+
+        if (botHand.length === 0) {
+          unoGameOver = true;
+          setUnoStatus(`🤖 <strong>English Bot</strong> played <strong>${botCard.affix}</strong> and emptied its hand! Click <strong>New Match</strong> to try again!`);
+          renderUnoTable();
+          return;
+        }
+
+        const botUnoShout = botHand.length === 1 ? ' Bot shouts <strong>"UNO / ONE!"</strong>' : '';
+        setUnoStatus(`Bot played <strong>${botCard.affix}</strong> (${botCard.type} • ${botCard.meaning}).${botUnoShout} Your turn!`);
+        isPlayerTurn = true;
+        renderUnoTable();
+      } else {
+        // Bot has no playable card -> Bot "eats a card"
+        const drawn = drawFromUnoDeck();
+        if (drawn) {
+          botHand.push(drawn);
+          if (canPlayCardOnTop(drawn, topCard, activeUnoColor)) {
+            // Bot plays the drawn card immediately
+            botHand.pop();
+            unoDiscard.push(drawn);
+            activeUnoColor = drawn.color === 'wild' ? 'blue' : drawn.color;
+
+            if (botHand.length === 0) {
+              unoGameOver = true;
+              setUnoStatus(`🤖 Bot ate <strong>${drawn.affix}</strong>, played it, and won! Click <strong>New Match</strong> to rematch!`);
+              renderUnoTable();
+              return;
+            }
+            setUnoStatus(`Bot had no match, ate a card, and immediately played <strong>${drawn.affix}</strong> (${drawn.meaning})! Your turn!`);
+          } else {
+            setUnoStatus(`Bot had no match, ate a card from the deck, and passed. Your turn!`);
+          }
+        } else {
+          setUnoStatus('Bot could not play and deck is empty. Your turn!');
+        }
+        isPlayerTurn = true;
+        renderUnoTable();
+      }
+    }
+
+    /**
+     * =========================================================================
+     * 6. INITIALIZATION & EVENT LISTENERS
+     * =========================================================================
+     */
+    window.addEventListener('DOMContentLoaded', () => {
+      // Set today's date automatically in YYYY-MM-DD format
+      const dateInput = document.getElementById('test-date-input');
+      const today = new Date();
+      const yyyy = today.getFullYear();
+      const mm = String(today.getMonth() + 1).padStart(2, '0');
+      const dd = String(today.getDate()).padStart(2, '0');
+      dateInput.value = `${yyyy}-${mm}-${dd}`;
+
+      // Keep certificate name/date synced if student edits them
+      document.getElementById('student-name-input').addEventListener('input', e => {
+        document.getElementById('cert-student-name').textContent = e.target.value.trim() || 'English Family Star Student';
+      });
+      dateInput.addEventListener('change', e => {
+        document.getElementById('cert-date').textContent = e.target.value;
+      });
+
+      // Part 1 Filter Buttons
+      document.querySelectorAll('.affix-filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          currentAffixFilter = btn.dataset.filter;
+          document.querySelectorAll('.affix-filter-btn').forEach(b => {
+            b.className = 'affix-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:text-slate-900 transition cursor-pointer';
+          });
+          btn.className = 'affix-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-indigo-700 shadow-sm transition cursor-pointer';
+          renderStudyCards();
+        });
+      });
+
+      // Part 1 Search Input
+      document.getElementById('affix-search-input').addEventListener('input', renderStudyCards);
+
+      // Part 1 Complete Button
+      const completePart1Btn = document.getElementById('complete-part1-btn');
+      completePart1Btn.addEventListener('click', () => {
+        if (!appState.part1Completed) {
+          appState.part1Completed = true;
+          completePart1Btn.innerHTML = '<i class="fa-solid fa-check-circle"></i><span>Part 1 Completed (+30%)</span>';
+          completePart1Btn.className = 'w-full sm:w-auto px-6 py-3 rounded-xl bg-emerald-600 text-white font-bold text-sm shadow-md flex items-center justify-center gap-2 cursor-default';
+          showToast('Part 1 Study Guide completed! +30% added to your progress bar.', 'success');
+          updateGlobalProgressUI();
+        }
+      });
+
+      // Part 2 Reset Button
+      document.getElementById('reset-memory-btn').addEventListener('click', () => {
+        initMemoryGame();
+        showToast('Memory cards shuffled! Ready to play.', 'info');
+      });
+
+      // Part 3 UNO Controls
+      document.getElementById('toggle-uno-rules-btn').addEventListener('click', () => {
+        document.getElementById('uno-rules-box').classList.toggle('hidden');
+      });
+      document.getElementById('restart-uno-btn').addEventListener('click', () => {
+        initUnoGame();
+        showToast('New UNO Affix Battle started! 7 cards dealt.', 'info');
+      });
+      document.getElementById('uno-draw-deck-btn').addEventListener('click', handlePlayerEatCard);
+      document.getElementById('uno-pass-btn').addEventListener('click', handlePlayerPassTurn);
+      document.getElementById('uno-call-btn').addEventListener('click', handleUnoCall);
+
+      document.querySelectorAll('.wild-color-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (pendingWildCardIndex !== null) {
+            executePlayerCardPlay(pendingWildCardIndex, btn.dataset.wildColor);
+          }
+        });
+      });
+
+      // Initialize all 3 sections
+      renderStudyCards();
+      initMemoryGame();
+      initUnoGame();
+      updateGlobalProgressUI();
+    });
+  </script>
+</body>
+</html>
